@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:wallpaper_ground/category.dart';
 import 'package:wallpaper_ground/constants.dart';
 import 'package:wallpaper_ground/models/category.dart';
@@ -11,6 +12,7 @@ import 'package:wallpaper_ground/services/apimanager.dart';
 import 'package:wallpaper_ground/services/criudentials.dart';
 import 'package:wallpaper_ground/showwallpapers.dart';
 import 'package:wallpaper_ground/widgets/customcategory.dart';
+import 'package:wallpaper_ground/widgets/custominput.dart';
 import 'package:wallpaper_ground/widgets/wallpapers.dart';
 import 'package:http/http.dart' as http;
 
@@ -73,8 +75,9 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
-          title: Text("Wallpaper Ground"),
-          titleTextStyle: Constants.heading2,
+          title: const Text("Wallpaper Ground"),
+          titleTextStyle:
+              Constants.heading2.copyWith(color: Constants.Secandory),
           centerTitle: true,
           automaticallyImplyLeading: false,
         ),
@@ -91,22 +94,27 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(15.0),
                   ),
                   child: SizedBox(
-                    height: 45,
+                    height: 48,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(children: [
-                        Icon(
-                          Icons.search,
-                          color: Constants.Primery,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          "Search Wallpapers...",
-                          style: Constants.regular2,
-                        )
-                      ]),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: custominput(
+                          hinttxt: "Search Wallpaper...",
+                          ispassword: false,
+                          icc: IconButton(
+                            onPressed: () {
+                              String name = searchController.text
+                                  .toLowerCase()
+                                  .replaceAll(' ', '');
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ShowAllWallpapers(categname: name)));
+                            },
+                            icon: Icon(Icons.search),
+                          ),
+                          conto: searchController,
+                          ontap: () {}),
                     ),
                   ),
                 ),

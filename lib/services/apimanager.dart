@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:wallpaper_ground/models/category.dart';
 import 'package:wallpaper_ground/models/picture.dart';
 import 'package:wallpaper_ground/services/criudentials.dart';
-import 'package:wallpaper_manager/wallpaper_manager.dart';
 
 // Future<PhotosModel> getSearchWallpaper(String searchQuery) async {
 //   PhotosModel photosModel = PhotosModel();
@@ -126,26 +126,26 @@ Future<PhotosModel> getCategorieWallpaper(String categorie) async {
 Future<bool> updatehomescreen(String uri) async {
   int location = WallpaperManager.HOME_SCREEN;
   var file = await DefaultCacheManager().getSingleFile(uri);
-  String result =
+  bool result =
       await WallpaperManager.setWallpaperFromFile(file.path, location);
   print(result);
-  return false;
+  return result;
 }
 
 Future<bool> updatelockscreen(String uri) async {
   int location = WallpaperManager.LOCK_SCREEN;
   var file = await DefaultCacheManager().getSingleFile(uri);
-  String result =
+  bool result =
       await WallpaperManager.setWallpaperFromFile(file.path, location);
   print(result);
-  return false;
+  return result;
 }
 
 Future<bool> updatebothscreen(String uri) async {
-  int location = WallpaperManager.BOTH_SCREENS;
+  int location = WallpaperManager.BOTH_SCREEN;
   var file = await DefaultCacheManager().getSingleFile(uri);
-  String result =
+  bool result =
       await WallpaperManager.setWallpaperFromFile(file.path, location);
   print(result);
-  return false;
+  return result;
 }

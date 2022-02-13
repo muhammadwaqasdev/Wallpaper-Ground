@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:motion_toast/resources/arrays.dart';
 
 import 'package:wallpaper_ground/constants.dart';
 import 'package:wallpaper_ground/services/apimanager.dart';
 import 'package:wallpaper_ground/widgets/custombtn.dart';
+import 'package:motion_toast/motion_toast.dart';
 
-class PhotoShowPage extends StatelessWidget {
+class PhotoShowPage extends StatefulWidget {
   final String uri;
   const PhotoShowPage({
     Key? key,
     required this.uri,
   }) : super(key: key);
 
+  @override
+  State<PhotoShowPage> createState() => _PhotoShowPageState();
+}
+
+class _PhotoShowPageState extends State<PhotoShowPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +41,7 @@ class PhotoShowPage extends StatelessWidget {
             child: Image(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              image: NetworkImage(uri),
+              image: NetworkImage(widget.uri),
               fit: BoxFit.cover,
             ),
           ),
@@ -74,11 +81,14 @@ class PhotoShowPage extends StatelessWidget {
                               ),
                               TextButton(
                                 onPressed: () async {
-                                  bool isupdated = await updatehomescreen(uri);
+                                  bool isupdated =
+                                      await updatehomescreen(widget.uri);
                                   if (isupdated) {
-                                    print("Home Updated");
+                                    _displaySuccessMotionToast(
+                                        context, "Home Screen Wallpaper Set");
+                                    setState(() {});
                                   } else {
-                                    print("Home try");
+                                    _displayErrorMotionToast(context);
                                   }
                                 },
                                 child: Text(
@@ -88,11 +98,14 @@ class PhotoShowPage extends StatelessWidget {
                               ),
                               TextButton(
                                 onPressed: () async {
-                                  bool isupdated = await updatelockscreen(uri);
+                                  bool isupdated =
+                                      await updatelockscreen(widget.uri);
                                   if (isupdated) {
-                                    print("Lock Updated");
+                                    _displaySuccessMotionToast(
+                                        context, "Lock Screen Wallpaper Set");
+                                    setState(() {});
                                   } else {
-                                    print("Lock try");
+                                    _displayErrorMotionToast(context);
                                   }
                                 },
                                 child: Text(
@@ -102,12 +115,15 @@ class PhotoShowPage extends StatelessWidget {
                               ),
                               TextButton(
                                 onPressed: () async {
-                                  bool isupdated = await updatebothscreen(uri);
-                                  await updatehomescreen(uri);
+                                  bool isupdated =
+                                      await updatebothscreen(widget.uri);
+                                  await updatehomescreen(widget.uri);
                                   if (isupdated) {
-                                    print("Updated");
+                                    _displaySuccessMotionToast(
+                                        context, "Both Screen Wallpaper Set");
+                                    setState(() {});
                                   } else {
-                                    print("try");
+                                    _displayErrorMotionToast(context);
                                   }
                                 },
                                 child: Text(
@@ -131,5 +147,37 @@ class PhotoShowPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _displaySuccessMotionToast(BuildContext context, String txt) {
+    MotionToast.success(
+      title: Text(
+        txt,
+        style: Constants.heading1,
+      ),
+      description: Text(
+        'Have a good day!',
+        style: Constants.regular2,
+      ),
+      layoutOrientation: ORIENTATION.rtl,
+      animationType: ANIMATION.fromRight,
+      width: 300,
+      // onClose: () {
+      //   _displayWarningMotionToast();
+      // },
+    ).show(context);
+  }
+
+  void _displayErrorMotionToast(BuildContext context) {
+    MotionToast.error(
+      title: Text("Error", style: Constants.heading1),
+      description: Text(
+        'Restart App Then Try Again!',
+        style: Constants.regular2,
+      ),
+      layoutOrientation: ORIENTATION.rtl,
+      animationType: ANIMATION.fromRight,
+      width: 300,
+    ).show(context);
   }
 }

@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Constants.White,
         primarySwatch: Colors.blueGrey,
       ),
+      debugShowCheckedModeBanner: false,
       home: const HomePage(),
     );
   }
