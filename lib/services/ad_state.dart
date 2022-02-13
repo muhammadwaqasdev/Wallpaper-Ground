@@ -9,8 +9,8 @@ class Adstate {
   );
 
   // String get bannaradunitid => Platform.isAndroid ? "androidid" : "iosid";
-  // String get bannaradunitid => "ca-app-pub-9375453520913296/7167403370";
-  String get bannaradunitid => "ca-app-pub-3940256099942544/6300978111";
+  String get bannaradunitid => "ca-app-pub-9375453520913296/7167403370";
+  // String get bannaradunitid => "ca-app-pub-3940256099942544/6300978111";
 
   BannerAdListener get adlistener => listener;
 

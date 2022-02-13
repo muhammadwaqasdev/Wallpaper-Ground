@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
-          title: const Text("Wallpaper Ground"),
+          title: Image(image: AssetImage("assets/namelogo.png")),
           titleTextStyle:
               Constants.heading2.copyWith(color: Constants.Secandory),
           centerTitle: true,
