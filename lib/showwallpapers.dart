@@ -1,10 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 import 'package:wallpaper_ground/constants.dart';
 import 'package:wallpaper_ground/models/picture.dart';
 import 'package:wallpaper_ground/photopage.dart';
+import 'package:wallpaper_ground/services/ad_state.dart';
 import 'package:wallpaper_ground/services/apimanager.dart';
 import 'package:wallpaper_ground/services/criudentials.dart';
 import 'package:wallpaper_ground/widgets/wallpapers.dart';
@@ -21,6 +24,7 @@ class ShowAllWallpapers extends StatefulWidget {
 class _ShowAllWallpapersState extends State<ShowAllWallpapers> {
   List<PhotosModel> categoriesWallpaper = [];
   int noOfImageToLoad = 1;
+  BannerAd? banner;
 
   getCategorieWallpaper() async {
     await http.get(
@@ -55,6 +59,32 @@ class _ShowAllWallpapersState extends State<ShowAllWallpapers> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final adstate = Provider.of<Adstate>(context);
+    adstate.initialization.then((value) {
+      setState(() {
+        banner = BannerAd(
+            size: AdSize.banner,
+            adUnitId: adstate.bannaradunitid,
+            listener: BannerAdListener(
+              onAdLoaded: (Ad ad) {
+                print('$BannerAd loaded.');
+              },
+              onAdFailedToLoad: (Ad ad, LoadAdError error) {
+                print('$BannerAd failedToLoad: $error');
+              },
+              onAdOpened: (Ad ad) => print('$BannerAd onAdOpened.'),
+              onAdClosed: (Ad ad) => print('$BannerAd onAdClosed.'),
+            ),
+            request: AdRequest());
+
+        banner!.load();
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -74,31 +104,49 @@ class _ShowAllWallpapersState extends State<ShowAllWallpapers> {
         ),
       ),
       body: SafeArea(
-        child: GridView.count(
-          controller: _scrollController,
-          crossAxisCount: 2,
-          childAspectRatio: 0.6,
-          physics: const ClampingScrollPhysics(),
-          shrinkWrap: true,
-          padding: const EdgeInsets.all(4.0),
-          mainAxisSpacing: 6.0,
-          crossAxisSpacing: 6.0,
-          children: List.generate(categoriesWallpaper.length, (index) {
-            return Newwalpapers(
-              uri: categoriesWallpaper[index].src!.portrait.toString(),
-              onclick: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => PhotoShowPage(
-                              uri: categoriesWallpaper[index]
-                                  .src!
-                                  .portrait
-                                  .toString(),
-                            )));
-              },
-            );
-          }),
+        child: Stack(
+          children: [
+            GridView.count(
+              controller: _scrollController,
+              crossAxisCount: 2,
+              childAspectRatio: 0.6,
+              physics: const ClampingScrollPhysics(),
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(4.0),
+              mainAxisSpacing: 6.0,
+              crossAxisSpacing: 6.0,
+              children: List.generate(categoriesWallpaper.length, (index) {
+                return Newwalpapers(
+                  uri: categoriesWallpaper[index].src!.portrait.toString(),
+                  onclick: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PhotoShowPage(
+                                  uri: categoriesWallpaper[index]
+                                      .src!
+                                      .portrait
+                                      .toString(),
+                                )));
+                  },
+                );
+              }),
+            ),
+            Positioned(
+                bottom: 0,
+                child: (banner == null)
+                    ? const SizedBox(
+                        height: 50,
+                      )
+                    : Container(
+                        alignment: Alignment.bottomCenter,
+                        height: 50,
+                        width: MediaQuery.of(context).size.width,
+                        child: AdWidget(
+                          ad: banner!,
+                        ),
+                      ))
+          ],
         ),
       ),
     );

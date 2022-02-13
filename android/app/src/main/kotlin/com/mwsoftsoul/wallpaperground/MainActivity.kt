@@ -1,4 +1,4 @@
-package com.example.wallpaper_ground
+package com.mwsoftsoul.wallpaperground
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -42,10 +42,6 @@ class custominput extends StatelessWidget {
                 icon: icc,
                 border: InputBorder.none,
                 hintText: hinttxt,
-                // contentPadding: const EdgeInsets.symmetric(
-                //   horizontal: 5.0,
-                //   vertical: 3.0,
-                // ),
               ),
               style: Constants.regular2,
             ),
