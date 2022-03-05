@@ -119,37 +119,24 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Card(
-                      elevation: 10,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: SizedBox(
-                        height: 48,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: custominput(
-                              hinttxt: "Search Wallpaper...",
-                              ispassword: false,
-                              icc: IconButton(
-                                onPressed: () {
-                                  String name = searchController.text
-                                      .toLowerCase()
-                                      .replaceAll(' ', '');
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              ShowAllWallpapers(
-                                                  categname: name)));
-                                },
-                                icon: Icon(Icons.search),
-                              ),
-                              conto: searchController,
-                              ontap: () {}),
+                    custominput(
+                        hinttxt: "Search Wallpaper...",
+                        ispassword: false,
+                        icc: IconButton(
+                          onPressed: () {
+                            String name = searchController.text
+                                .toLowerCase()
+                                .replaceAll(' ', '');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ShowAllWallpapers(categname: name)));
+                          },
+                          icon: Icon(Icons.search),
                         ),
-                      ),
-                    ),
+                        conto: searchController,
+                        ontap: () {}),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

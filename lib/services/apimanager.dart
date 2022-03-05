@@ -33,6 +33,13 @@ List<CategorieModel> getCategories() {
 
   //
   categorieModel.imgUrl =
+      "https://images.pexels.com/photos/5011647/pexels-photo-5011647.jpeg";
+  categorieModel.categorieName = "3D";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
       "https://images.pexels.com/photos/545008/pexels-photo-545008.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
   categorieModel.categorieName = "Street Art";
   categories.add(categorieModel);
@@ -47,8 +54,50 @@ List<CategorieModel> getCategories() {
 
   //
   categorieModel.imgUrl =
+      "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg";
+  categorieModel.categorieName = "Programing";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
       "https://images.pexels.com/photos/34950/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500";
   categorieModel.categorieName = "Nature";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/4473871/pexels-photo-4473871.jpeg";
+  categorieModel.categorieName = "Love";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg";
+  categorieModel.categorieName = "Flowers";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg";
+  categorieModel.categorieName = "Food";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/9198/nature-sky-twilight-grass-9198.jpg";
+  categorieModel.categorieName = "Tree";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/326240/pexels-photo-326240.jpeg";
+  categorieModel.categorieName = "Frout";
   categories.add(categorieModel);
   categorieModel = CategorieModel();
 
@@ -78,6 +127,83 @@ List<CategorieModel> getCategories() {
   categorieModel.imgUrl =
       "https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500";
   categorieModel.categorieName = "Cars";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/2156881/pexels-photo-2156881.jpeg";
+  categorieModel.categorieName = "Abstract";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/145939/pexels-photo-145939.jpeg";
+  categorieModel.categorieName = "Animal";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/104764/pexels-photo-104764.jpeg";
+  categorieModel.categorieName = "Army";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg";
+  categorieModel.categorieName = "Beach";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/1639729/pexels-photo-1639729.jpeg";
+  categorieModel.categorieName = "Brands";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/1274260/pexels-photo-1274260.jpeg";
+  categorieModel.categorieName = "Creative";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/3756616/pexels-photo-3756616.jpeg";
+  categorieModel.categorieName = "Funny";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/278918/pexels-photo-278918.jpeg";
+  categorieModel.categorieName = "Games";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/3444345/pexels-photo-3444345.png";
+  categorieModel.categorieName = "Holidays";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg";
+  categorieModel.categorieName = "Landscapes";
+  categories.add(categorieModel);
+  categorieModel = CategorieModel();
+
+  //
+  categorieModel.imgUrl =
+      "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg";
+  categorieModel.categorieName = "Sports";
   categories.add(categorieModel);
   categorieModel = CategorieModel();
 

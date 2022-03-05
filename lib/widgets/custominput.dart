@@ -20,32 +20,37 @@ class custominput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formkey = GlobalKey<FormState>();
-    return Container(
-      decoration: BoxDecoration(
-        color: Constants.White,
-      ),
-      child: Form(
-        key: formkey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextFormField(
-              onTap: () {
-                ontap();
-              },
-              validator: (val) {
-                return val!.isEmpty ? null : "Please Enter";
-              },
-              controller: conto,
-              obscureText: ispassword,
-              decoration: InputDecoration(
-                icon: icc,
-                border: InputBorder.none,
-                hintText: hinttxt,
+    return Material(
+      elevation: 5,
+      borderRadius: BorderRadius.circular(15),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Constants.White,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Form(
+          key: formkey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextFormField(
+                onTap: () {
+                  ontap();
+                },
+                validator: (val) {
+                  return val!.isEmpty ? null : "Please Enter";
+                },
+                controller: conto,
+                obscureText: ispassword,
+                decoration: InputDecoration(
+                  icon: icc,
+                  border: InputBorder.none,
+                  hintText: hinttxt,
+                ),
+                style: Constants.regular2,
               ),
-              style: Constants.regular2,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
